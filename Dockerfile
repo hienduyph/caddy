@@ -2,8 +2,7 @@ ARG VERSION=latest
 
 FROM docker.io/caddy:${VERSION}-builder AS builder
 
-RUN caddy-builder \
-    github.com/caddy-dns/cloudflare
+RUN xcaddy --with github.com/caddy-dns/cloudflare --with github.com/mholt/caddy-ratelimit
 
 ARG VERSION=latest
 FROM docker.io/caddy:${VERSION}
